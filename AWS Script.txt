@@ -1,0 +1,35 @@
+sudo yum install perl-Switch perl-DateTime perl-Sys-Syslog perl-LWP-Protocol-https perl-Digest-SHA --enablerepo="rhui-REGION-rhel-server-optional" -y 
+sudo yum install zip unzip
+
+curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip -O
+
+
+unzip CloudWatchMonitoringScripts-1.2.2.zip && \
+rm CloudWatchMonitoringScripts-1.2.2.zip && \
+cd aws-scripts-mon
+
+*/2 * * * *./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail --from-cron
+
+
+*/5 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-util --mem-used --mem-avail --auto-scaling=only --from-cron
+
+
+*/5 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail --from-cron
+
+
+
+*/5 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron
+
+UTCL Memory Utilization Dashboard
+
+
+UTCL_Production_Static_Slave1a 29.6
+
+
+[root@ip-10-17-29-145 aws-scripts-mon]# .
+
+Memory Utilization for UTCL-Production-Auto Scaling Slave AZ-1A Scaling-Up
+
+UTCL-Production-Auto Scaling Slave AZ-1A Instance Memory Utilization Below 90 %
+
+Metr0P0l!$app
